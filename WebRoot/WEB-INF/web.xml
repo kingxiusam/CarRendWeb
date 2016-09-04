@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>CarRendDemo</display-name>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Users_login</servlet-name>
+    <servlet-class>servlet.Users_login</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Users_login_success</servlet-name>
+    <servlet-class>servlet.Users_login_success</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Curstomers_save</servlet-name>
+    <servlet-class>servlet.Curstomers_save</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Curstomers_add</servlet-name>
+    <servlet-class>servlet.Curstomers_add</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Curstomers</servlet-name>
+    <servlet-class>servlet.Curstomers</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Curstomers_delete</servlet-name>
+    <servlet-class>servlet.Curstomers_delete</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ImageServlet</servlet-name>
+    <servlet-class>servlet.ImageServlet</servlet-class>
+  </servlet>
+  
+  
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Curstomers_RendCar</servlet-name>
+    <servlet-class>servlet.Curstomers_RendCar</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Car_delete</servlet-name>
+    <servlet-class>servlet.Car_delete</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Car_add</servlet-name>
+    <servlet-class>servlet.Car_add</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>JspUpload</servlet-name>
+    <servlet-class>servlet.JspUpload</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>JspDownload</servlet-name>
+    <servlet-class>servlet.JspDownload</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DataImportDB</servlet-name>
+    <servlet-class>servlet.DataImportDB</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Car_addDriver</servlet-name>
+    <servlet-class>servlet.Car_addDriver</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Driver_delete</servlet-name>
+    <servlet-class>servlet.Driver_delete</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+  
+  <servlet-mapping>
+  <servlet-name>
+  ImageServlet
+  </servlet-name>
+  <url-pattern>
+  /servletyzm
+  </url-pattern>
+  </servlet-mapping>
+
+
+
+
+
+
+  
+
+
+  <servlet-mapping>
+    <servlet-name>Users_login</servlet-name>
+    <url-pattern>/servlet/Users_login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Users_login_success</servlet-name>
+    <url-pattern>/servlet/Users_login_success</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Curstomers_save</servlet-name>
+    <url-pattern>/servlet/Curstomers_save</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Curstomers_add</servlet-name>
+    <url-pattern>/servlet/Curstomers_add</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Curstomers</servlet-name>
+    <url-pattern>/servlet/Curstomers</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Curstomers_delete</servlet-name>
+    <url-pattern>/servlet/Curstomers_delete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ImageServlet</servlet-name>
+    <url-pattern>/servlet/ImageServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>Curstomers_RendCar</servlet-name>
+    <url-pattern>/servlet/Curstomers_RendCar</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Car_delete</servlet-name>
+    <url-pattern>/servlet/Car_delete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Car_add</servlet-name>
+    <url-pattern>/servlet/Car_add</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>JspUpload</servlet-name>
+    <url-pattern>/servlet/JspUpload</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>JspDownload</servlet-name>
+    <url-pattern>/servlet/JspDownload</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DataImportDB</servlet-name>
+    <url-pattern>/servlet/DataImportDB</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Car_addDriver</servlet-name>
+    <url-pattern>/servlet/Car_addDriver</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Driver_delete</servlet-name>
+    <url-pattern>/servlet/Driver_delete</url-pattern>
+  </servlet-mapping>
+  
+ 
+  <welcome-file-list>
+    
+    <welcome-file>Users_login.jsp</welcome-file>
+    
+  </welcome-file-list>
+ 
+</web-app>
