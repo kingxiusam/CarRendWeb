@@ -2,7 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.UUID;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -81,21 +81,27 @@ try{
 		if(part.getSize()==0L){
 			request.setAttribute("result","请选择要上传的文件！！");
 		}else{
+			/*文件后缀名 */
 		    String fileSuffix = FilenameUtils.getExtension(StringUtils.substringBetween(part.getHeader("content-disposition"), "filename=\"", "\""));
+			/*原文件名 */
+		    String file=StringUtils.substringBetween(part.getHeader("content-disposition"), "\\", ".");
+		    String filename=file.substring(file.length()-3,file.length());
+			/*文件具体路径 */
 		    String saveFilePath = request.getSession().getServletContext().getRealPath("\\")+"upload\\";
 		
 			System.out.println(saveFilePath);
 			System.out.println(fileSuffix);
+			System.out.println(filename);
 			
-			part.write(saveFilePath + "data" + "." + fileSuffix);
-			System.out.println(	saveFilePath + "data" + "." + fileSuffix);
+			part.write(saveFilePath + filename + "." + fileSuffix);
+		//	part.write(saveFilePath + "data" + "." + fileSuffix);
+			System.out.println(	saveFilePath + filename+ "." + fileSuffix);
 		
 		//	System.out.println(StringUtils.substringBefore(request.getParameter("excel"),".xls"));
 		//	part.write(saveFilePath + UUID.randomUUID().toString() + "." + fileSuffix);
 		//	part.write(saveFilePath + StringUtils.substringBefore(request.getParameter("excel"),".xls") + "." + fileSuffix);
 			request.setAttribute("result", "文件上传成功！！！");
-			
-			//response.sendRedirect("/CarRendDemo/DateMaker.jsp");
+			response.sendRedirect("/CarRendDemo/DateMaker.jsp");
 			
 		}
      }catch(Exception e){

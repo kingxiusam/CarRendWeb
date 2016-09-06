@@ -240,7 +240,7 @@ public class SqlControule {
   
   
   //Excel数据批量导入数据库
-  public void dataimport(List<String[]> list) throws SQLException{
+  public void dataimport_curstom(List<String[]> list) throws SQLException{
 	  String sql="insert into curstom values(?,?,?,?,?)";
 	  for(int i=0;i<list.size();i++){//记录条数
 		  pre_cmd=con.prepareStatement(sql);
@@ -254,6 +254,37 @@ public class SqlControule {
 	  
 }
 
+  public void dataimport_car(List<String[]> list) throws SQLException{
+	  String sql="insert into car values(?,?,?,?,?,?)";
+	  for(int i=0;i<list.size();i++){//记录条数
+		  pre_cmd=con.prepareStatement(sql);
+		  pre_cmd.setString(1, list.get(i)[0]);
+		  pre_cmd.setString(2, list.get(i)[1]);
+		  pre_cmd.setString(3, list.get(i)[2]);
+		  pre_cmd.setInt(4, Integer.parseInt(list.get(i)[3]));
+		  pre_cmd.setString(5, list.get(i)[4]);
+		  pre_cmd.setString(6, list.get(i)[5]);
+		  pre_cmd.executeUpdate();
+	  }
+	  
+}
+  
+  
+  
+  public void dataimport_driver(List<String[]> list) throws SQLException{
+	  String sql="insert into car values(?,?,?,?,?,?)";
+	  for(int i=0;i<list.size();i++){//记录条数
+		  pre_cmd=con.prepareStatement(sql);
+		  pre_cmd.setString(1, list.get(i)[0]);
+		  pre_cmd.setString(2, list.get(i)[1]);
+		  pre_cmd.setInt(3, Integer.parseInt(list.get(i)[2]));
+		  pre_cmd.setString(4, list.get(i)[3]);
+		  pre_cmd.setString(5, list.get(i)[4]);
+		  pre_cmd.executeUpdate();
+	  }
+	  
+}
+  
   
 }
 

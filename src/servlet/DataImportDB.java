@@ -56,9 +56,10 @@ public class DataImportDB extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		ExecutorService exec=Executors.newFixedThreadPool(6);//设置线程池含6个线程
-		exec.submit(new ThreadTest(new File("C:/Users/Administrator/workspace/.metadata/.me_tcat7/webapps/CarRendDemo/upload/data.xls")));
+		String table=request.getParameter("table_type");
+		exec.submit(new ThreadTest(new File(request.getSession().getServletContext().getRealPath("\\")+"upload\\"+table+".xls"),table));
+		//exec.submit(new ThreadTest(new File("C:/Users/Administrator/workspace/.metadata/.me_tcat7/webapps/CarRendDemo/upload/data.xls")));
 		exec.shutdown();
-		//SqlControule.getSqlObj().dataimport(ReadingExcel.xls2String(file));
 		response.sendRedirect("/CarRendDemo/Curstomers/Curstomers_query_success.jsp");
 		
 	}
