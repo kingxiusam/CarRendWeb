@@ -100,6 +100,8 @@ var money="<%=session.getAttribute("sum_money")%>";
    }
 }
 
+
+
 </script>
 <div id="navi">
 	<div id='naviDiv'>
@@ -119,16 +121,49 @@ var money="<%=session.getAttribute("sum_money")%>";
 </div>
 
 <% 
+
+
+     int  curpage=1;//默认当前页为1
+	 String spage=request.getParameter("curpage");
+	 if(spage!=null){
+	 curpage=Integer.parseInt(spage);
+	 }
+	 
+	 
     // SqlControule sqlObj=new SqlControule();
-	 ArrayList<Curstom> curstomers=new  ArrayList<Curstom>();
+	 List<Curstom> curstomers=new  ArrayList<Curstom>();
 	// curstomers=sqlObj.queryAllCurstom();
-	curstomers=SqlControule.getSqlObj().queryAllCurstom();
+	if(curstomers.size()>=20){
+ 	 curstomers= SqlControule.getSqlObj().queryAllCurstom().subList((curpage-1)*20, (curpage-1)*20+20);
+ 	 }else{
+ 	  curstomers= SqlControule.getSqlObj().queryAllCurstom();
+ 	 }
 	 pageContext.setAttribute("curstomerlist",curstomers);
 
 	 session.setAttribute("sum_money",Get_sum_money.getMoney());
+     
+     
+     int listsize=curstomers.size();//总的记录数
+	 int pages=0;
+	 int curpage_index=1;//当前页默认为1
+	 
+	 if(listsize%20==0){
+      pages=listsize/20;
 
-	
-%>
+	 }else{
+	  pages=listsize/20+1;
+	 }
+	 
+	 
+
+
+ 
+
+   %>
+
+
+
+
 <div id="mainContainer">
 
 <table class="default" width="100%">
@@ -161,6 +196,14 @@ var money="<%=session.getAttribute("sum_money")%>";
 	</tr>
   </c:forEach>
 </table>
+<% 
+out.println("<tr><td><a href=Curstomers_query_success.jsp?curpage=1>首页</a></td>");
+out.println("<td><a href=Curstomers_query_success.jsp?curpage="+(curpage+1)+">>下一页</a></td>");
+out.println("<td><a href=Curstomers_query_success.jsp?curpage="+(curpage-1)+">>上一页</a></td>");      
+out.println("<td><a href=Curstomers_query_success.jsp?curpage="+pages+">>最后一页</a></td>");
+
+ %>
+   <br>
 <input type="button" name="getMoney" value="租金结算" onclick="getMoney()">
 </div>
 </body>

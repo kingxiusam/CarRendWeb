@@ -110,13 +110,35 @@ document.getElementById("DriverStatu").innerHTML ="已被选" ;
 </div>
 
 <% 
- 
+  int  curpage=1;//默认当前页为1
+	 String spage=request.getParameter("curpage");
+	 if(spage!=null){
+	 curpage=Integer.parseInt(spage);
+	 }
   
-	ArrayList<Driver> drivers=new  ArrayList<Driver>();
-    drivers=SqlControule.getSqlObj().queryAllDriver(null, null);
+	List<Driver> drivers=new  ArrayList<Driver>();
+	if(drivers.size()>=20){
+    drivers=SqlControule.getSqlObj().queryAllDriver(null, null).subList((curpage-1)*20, (curpage-1)*20+20);
+    }else{
+      drivers=SqlControule.getSqlObj().queryAllDriver(null, null);
+    }
     pageContext.setAttribute("driverlist",drivers);
    // request.getParameter("CarId");
     pageContext.setAttribute("CarId_save",request.getParameter("CarId"));
+    
+    
+     int listsize=drivers.size();//总的记录数
+	 int pages=0;
+	 int curpage_index=1;//当前页默认为1
+	 
+	 if(listsize%20==0){
+      pages=listsize/20;
+
+	 }else{
+	  pages=listsize/20+1;
+	 }
+	 
+    
 %>
 <div id="mainContainer">
 <table class="default" width="100%">
@@ -155,7 +177,13 @@ document.getElementById("DriverStatu").innerHTML ="已被选" ;
 	</tr>
   </c:forEach>
 </table>
+<% 
+out.println("<tr><td><a href=Driver_query_success.jsp?curpage=1>首页</a></td>");
+out.println("<td><a href=Driver_query_success.jsp?curpage="+(curpage+1)+">>下一页</a></td>");
+out.println("<td><a href=Driver_query_success.jsp?curpage="+(curpage-1)+">>上一页</a></td>");      
+out.println("<td><a href=Driver_query_success.jsp?curpage="+pages+">>最后一页</a></td>");
 
+ %>
 </div>
 </body>
 </html>

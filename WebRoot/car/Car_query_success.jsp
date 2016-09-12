@@ -97,12 +97,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 <% 
+
+
+     int  curpage=1;//默认当前页为1
+	 String spage=request.getParameter("curpage");
+	 if(spage!=null){
+	 curpage=Integer.parseInt(spage);
+	 }
    // SqlControule sqlObj=new SqlControule();
 	session.setAttribute("sum_money",Get_sum_money.getMoney());
 
-	ArrayList<Car> cars=new  ArrayList<Car>();
-    cars=SqlControule.getSqlObj().queryAllCar(null,null); 
+	List<Car> cars=new  ArrayList<Car>();
+	if(cars.size()>=20){
+    cars=SqlControule.getSqlObj().queryAllCar(null,null).subList((curpage-1)*20, (curpage-1)*20+20); 
+    }else{
+        cars=SqlControule.getSqlObj().queryAllCar(null,null); 
+    }
     pageContext.setAttribute("carlist",cars);
+    
+     int listsize=cars.size();//总的记录数
+	 int pages=0;
+	 int curpage_index=1;//当前页默认为1
+	 
+	 if(listsize%20==0){
+      pages=listsize/20;
+
+	 }else{
+	  pages=listsize/20+1;
+	 }
 %>
 <div id="mainContainer">
 
@@ -138,7 +160,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</tr>
   </c:forEach>
 </table>
+<% 
+out.println("<tr><td><a href=Car_query_success.jsp?curpage=1>首页</a></td>");
+out.println("<td><a href=Car_query_success.jsp?curpage="+(curpage+1)+">>下一页</a></td>");
+out.println("<td><a href=Car_query_success.jsp?curpage="+(curpage-1)+">>上一页</a></td>");      
+out.println("<td><a href=Car_query_success.jsp?curpage="+pages+">>最后一页</a></td>");
 
+ %>
 </div>
 </body>
 </html>
